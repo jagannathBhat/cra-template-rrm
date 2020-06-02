@@ -1,33 +1,27 @@
 {
-	"name": "rrm-app",
-	"version": "1.0.5",
-	"description": "Boilerplate for making web apps with React, Redux and Material-UI.",
-	"main": "index.js",
-	"scripts": {
-		"test": "echo \"Error: no test specified\" && exit 1"
-	},
-	"repository": {
-		"type": "git",
-		"url": "git+https://github.com/jagannathBhat/rrm-app.git"
-	},
 	"author": "Jagannath Bhat <jagannathbhatjb@gmail.com> (https://bhat.dev)",
-	"license": "MIT",
 	"bugs": {
-		"url": "https://github.com/jagannathBhat/rrm-app/issues"
+		"url": "https://github.com/jagannathBhat/cra-template-rrm/issues"
 	},
-	"homepage": "https://github.com/jagannathBhat/rrm-app#readme",
-	"bin": {
-		"rrm-app": "./index.js"
-	},
-	"dependencies": {
-		"chalk": "^4.0.0",
-		"copy-dir": "^1.2.0",
-		"yargs": "^15.3.1"
-	},
+	"description": "Template for Create React App with Redux and Material UI.",
+	"files": [
+		"template",
+		"template.json"
+	],
+	"homepage": "https://github.com/jagannathBhat/cra-template-rrm#readme",
 	"keywords": [
+		"create-react-app",
+		"material-ui",
 		"react",
 		"redux",
-		"material-ui",
-		"create-react-app"
-	]
+		"template"
+	],
+	"license": "MIT",
+	"main": "template.json",
+	"name": "cra-template-rrm",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/jagannathBhat/cra-template-rrm.git"
+	},
+	"version": "1.0.0"
 }
