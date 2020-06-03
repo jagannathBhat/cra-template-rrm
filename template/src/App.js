@@ -1,5 +1,13 @@
-import React from 'react'
-import { makeStyles, Paper, Typography, useMediaQuery } from '@material-ui/core'
+import React, { useState } from 'react'
+import {
+	Button,
+	createMuiTheme,
+	CssBaseline,
+	makeStyles,
+	ThemeProvider,
+	Typography,
+	useMediaQuery,
+} from '@material-ui/core'
 import { Provider } from 'react-redux'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 
@@ -7,17 +15,40 @@ import './App.css'
 import logo from './logo.svg'
 import store from './store'
 import { useStyles } from './theme'
+import { getMode, setMode } from './actions/darkModeActions'
 
 function App() {
+	const [darkMode, setDarkMode] = useState(getMode())
+	console.log(darkMode)
+
 	const classes = useStyles()
+
 	const localClasses = useLocalStyles()
+
+	const toggleDarkMode = () => {
+		setDarkMode(!darkMode)
+		setMode(!darkMode)
+		// window.location.reload()
+	}
+
+	const theme = React.useMemo(
+		() =>
+			createMuiTheme({
+				palette: {
+					type: darkMode ? 'dark' : 'light',
+				},
+			}),
+		[darkMode]
+	)
+
 	return (
 		<Provider store={store}>
-			<Paper elevation={0} className={classes.root}>
+			<ThemeProvider theme={theme}>
+				<CssBaseline />
 				<Router>
 					<Switch>
 						<Route exact path='/'>
-							<div className={localClasses.app + ' ' + classes.centerizer}>
+							<div className={classes.centerizer}>
 								<header className={localClasses.appHeader}>
 									<img
 										alt='logo'
@@ -63,23 +94,26 @@ function App() {
 										</a>
 										)
 									</Typography>
+									<Button
+										className={localClasses.button}
+										onClick={toggleDarkMode}
+										variant='contained'
+									>
+										Toggle Dark Mode
+									</Button>
 								</header>
 							</div>
 						</Route>
 					</Switch>
 				</Router>
-			</Paper>
+			</ThemeProvider>
 		</Provider>
 	)
 }
 
 const useLocalStyles = makeStyles(theme => ({
-	app: {
-		backgroundColor: '#282c34',
-	},
 	appHeader: {
 		alignItems: 'center',
-		color: 'white',
 		display: 'flex',
 		flexDirection: 'column',
 		fontSize: 'calc(10px + 2vmin)',
@@ -95,6 +129,9 @@ const useLocalStyles = makeStyles(theme => ({
 	},
 	appLogoAnim: {
 		animation: 'App-logo-spin infinite 20s linear',
+	},
+	button: {
+		margin: theme.spacing(2),
 	},
 	devLink: {
 		color: 'inherit',
