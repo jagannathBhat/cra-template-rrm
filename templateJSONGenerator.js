@@ -10,6 +10,7 @@ const packages = [
 	'@testing-library/jest-dom',
 	'@testing-library/react',
 	'@testing-library/user-event',
+	'fontsource-roboto',
 	'react',
 	'react-dom',
 	'react-redux',
@@ -18,7 +19,6 @@ const packages = [
 	'redux',
 	'redux-devtools-extension',
 	'redux-thunk',
-	'typeface-roboto',
 ]
 const templateFile = 'template.json'
 const writeToFile = (string, flag = 'a') => {

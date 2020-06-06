@@ -28,7 +28,6 @@ function App() {
 	const toggleDarkMode = () => {
 		setDarkMode(!darkMode)
 		setMode(!darkMode)
-		// window.location.reload()
 	}
 
 	const theme = React.useMemo(
